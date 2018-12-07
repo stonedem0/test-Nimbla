@@ -2,23 +2,20 @@ const Invoice = require('../models/invoice')
 
 module.exports = app => {
     app.get('/invoices', async(req, res) => {
-        const invoices = await Invoice.find()
-        JSON.stringify(invoices)
-        invoices.map((i) => {
-            res.send(`value: ${i.invoice_value} 
-                     description: ${i.description}`)
-        })
+        const invoices = await Invoice.find().sort({status: 1})
+        res.render('invoices', {invoices: invoices})
         console.log('invoices:', invoices, typeof invoices)
 
     })
 
     app.post('/create', async(req, res) => {
         console.log('body:', req.body)
-        const {invoice_value, customer_name, description} = req.body;
+        const {invoice_value, customer_name, description, paid_status} = req.body;
         const invoice = new Invoice ({
             invoice_value: invoice_value,
             customer_name: customer_name,
             description: description,
+            paid_status:paid_status
         })
 
         console.log('new one: ', invoice)

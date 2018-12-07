@@ -1,0 +1,9 @@
+doctype html  
+html(lang='en')  
+  head
+    title Invoices
+  body
+    div.invoices 
+      each i in invoices
+       p= i.customer_name
+       p= i.paid_status
