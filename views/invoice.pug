@@ -1,14 +1,19 @@
 doctype html  
 html(lang='en')  
  head
+   style
+    include invoices.css
    title Invoice
  body
-   div.create-post-container
+   div.create-invoice
     form(method='POST' action='/create', enctype='x-www-form-urlencoded')
       div.form-group
-        input#invoice_value.form-control(type='text', placeholder='value' name='invoice_value')
-        input#name.form-control(type='text', placeholder='name' name='customer_name')
-        input#name.form-control(type='text', placeholder='status' name='paid_status')
-      div.form-group
-        textarea#description.form-control(type='text', placeholder='your post is here' name='description' cols='100', rows='10')  
-      button.custom-button(type='submit') Post it!
+        p
+         input#invoice_value.form-control(type='text', placeholder='value' name='invoice_value')
+        p 
+         input#name.form-control(type='text', placeholder='name' name='customer_name')
+        p 
+         input#name.form-control(type='text', placeholder='status' name='paid_status')
+        p 
+         input#description.form-control(type='text', placeholder='decsription' name='description' cols='100', rows='10')  
+      button.custom-button(type='submit') Save

@@ -2,10 +2,14 @@ const Invoice = require('../models/invoice')
 
 module.exports = app => {
     app.get('/invoices', async(req, res) => {
-        const invoices = await Invoice.find().sort({status: 1})
+        const invoices = await Invoice.find().sort({paid_status: -1})
         res.render('invoices', {invoices: invoices})
         console.log('invoices:', invoices, typeof invoices)
 
+    })
+
+    app.get('/create', (req, res) => {
+        res.render('invoice')
     })
 
     app.post('/create', async(req, res) => {
@@ -21,7 +25,7 @@ module.exports = app => {
         console.log('new one: ', invoice)
         try {
             await invoice.save()
-            res.send(`new invoice: ${invoice}`)
+            res.redirect('/invoices')
         } catch (err) {
             console.error('Error saving post: %s', err)
             res.send(400, err);

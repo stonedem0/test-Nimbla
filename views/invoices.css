@@ -1,0 +1,54 @@
+body {
+    background-color: #68D89B;
+    font-family:  BlinkMacSystemFont;
+    color: #00241B
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left
+}
+
+th, td {
+    padding: 20px;
+    border-bottom: 1px solid rgba(181, 255, 225, 0.39);
+}
+
+th {
+    background-color: rgba(255,255,255,0.3);
+}
+
+td {
+    height: 40px
+}
+
+.custom-button {
+    margin-top: 20px;
+    height: 35px;
+    width: 100px;
+    color: #00241B;
+    font-size: 14px;
+    background-color: rgba(255,255,255,0.3);
+    border: 0
+}
+
+input,
+textarea {
+    font-size: 20px;
+    color: #333333;
+    border-style: solid;
+    background: #68D89B;
+    border-width: 0 0 2px;
+    border-color:  rgba(181, 255, 225, 0.39);
+    outline: none;
+    resize: none;
+
+}
+
+p {
+    justify-content: center
+}
+
+/* .form-group {
+  justify-content: center
+} */
