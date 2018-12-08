@@ -15,7 +15,10 @@ html(lang='en')
          tr 
           td= i.customer_name
           td= i.description
-          td= i.paid_status
+          if i.paid_status == 'paid'
+           td.paid= i.paid_status
+          else 
+           td.unpaid= i.paid_status
     div.add-new        
       a(href='/create') 
-       button.custom-button add new
+        button.custom-button add new

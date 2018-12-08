@@ -1,15 +1,23 @@
 body {
-    background-color: #68D89B;
-    font-family:  BlinkMacSystemFont;
-    color: #00241B
-}
-table {
-    width: 100%;
-    border-collapse: collapse;
-    text-align: left
+    background-color: rgba(99, 230, 170, .7);
+    font-family: BlinkMacSystemFont;
+    color: #701DD6;
 }
 
-th, td {
+.invoices {
+    display: flex;
+    justify-content: center;
+}
+table {
+    margin-top: 35px;
+    background-color: rgba(99, 230, 170, .6);
+    width: 70%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+td,
+th {
     padding: 20px;
     border-bottom: 1px solid rgba(181, 255, 225, 0.39);
 }
@@ -19,9 +27,39 @@ th {
 }
 
 td {
-    height: 40px
+    height: 40px;
+}
+@keyframes tr-animation {
+    0% {
+        background: linear-gradient(180deg, rgba(57,163,52,0.1) 0%, rgba(116,204,111,0.1) 50%, rgba(207,255,233,0.1) 100%)
+    };
+    50% {
+        background: linear-gradient(180deg, rgba(207,255,233,0.1) 0%, rgba(57,163,52,0.1) 50%, rgba(116,204,111,0.1) 100%)
+    };
+    100%{
+        background: linear-gradient(180deg, rgba(116,204,111,0.1) 0%, rgba(207,255,233,0.1) 50%, rgba(57,163,52,0.1) 100%)
+    }
 }
 
+tr:hover {
+    transition: all .3s cubic-bezier(.2,.42,.63,.69) ; 
+    background: rgba(181, 255, 225, 0.25);
+    /* background: linear-gradient(180deg, rgba(57,163,52,0.1) 0%, rgba(116,204,111,0.1) 50%, rgba(207,255,233,0.1) 100%);
+    /* animation: tr-animation 2s infinite;; */
+}
+
+.unpaid {
+    color: #EE6055;
+}
+.paid {
+    color: #007C52;
+}
+
+.add-new {
+    margin: 50px;
+    display: flex;
+    justify-content: center;
+}
 .custom-button {
     margin-top: 20px;
     height: 35px;
@@ -29,26 +67,50 @@ td {
     color: #00241B;
     font-size: 14px;
     background-color: rgba(255,255,255,0.3);
-    border: 0
+    border: 0;
 }
 
-input,
-textarea {
-    font-size: 20px;
+input {
+    font-size: 14px;
+    width: 300px;
     color: #333333;
-    border-style: solid;
-    background: #68D89B;
-    border-width: 0 0 2px;
-    border-color:  rgba(181, 255, 225, 0.39);
+    background-color: rgba(99, 230, 170, 0);
+    border-width: 0;
+    border-color: rgba(181, 255, 225, 0.39);
     outline: none;
     resize: none;
 
 }
 
-p {
-    justify-content: center
-}
+.create-invoice {
+    display: flex;
+    justify-content: center;
 
-/* .form-group {
-  justify-content: center
-} */
+}
+.invoice-field {
+    display: block;
+    text-decoration: none;
+    width: max-content;
+    position: relative;
+    transition: all 0.15s ease-out;
+}
+.invoice-field:before {
+    display: block;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(181, 255, 225, 0.8);
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.2s cubic-bezier(1, 0.25, 0, 0.75) 0s;
+}
+.invoice-field:hover:before {
+    display: block;
+    visibility: visible;
+    transform: scaleX(1);
+    animation-iteration-count: 1;
+
+}

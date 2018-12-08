@@ -8,12 +8,10 @@ html(lang='en')
    div.create-invoice
     form(method='POST' action='/create', enctype='x-www-form-urlencoded')
       div.form-group
-        p
+        p.invoice-field
          input#invoice_value.form-control(type='text', placeholder='value' name='invoice_value')
-        p 
+        p.invoice-field
          input#name.form-control(type='text', placeholder='name' name='customer_name')
-        p 
-         input#name.form-control(type='text', placeholder='status' name='paid_status')
-        p 
+        p.invoice-field
          input#description.form-control(type='text', placeholder='decsription' name='description' cols='100', rows='10')  
       button.custom-button(type='submit') Save

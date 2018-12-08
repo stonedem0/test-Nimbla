@@ -19,7 +19,7 @@ module.exports = app => {
             invoice_value: invoice_value,
             customer_name: customer_name,
             description: description,
-            paid_status:paid_status
+            paid_status:'unpaid'
         })
 
         console.log('new one: ', invoice)
