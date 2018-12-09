@@ -1,8 +1,10 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
+console.log
+
 
 const invoiceSchema = new Schema({
-  user:[{ type: Schema.Types.ObjectId, ref: 'User' }],
+  user_id:{ type: Schema.Types.ObjectId, ref: 'User' },
   invoice_value: Number,
   customer_name: String,
   description: String,
