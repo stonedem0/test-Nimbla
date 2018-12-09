@@ -4,7 +4,7 @@ module.exports = app => {
     app.get('/invoices', async(req, res) => {
         const invoices = await Invoice.find().sort({paid_status: -1})
         res.render('invoices', {invoices: invoices})
-        console.log('invoices:', invoices, typeof invoices)
+        // console.log('invoices:', invoices, typeof invoices)
 
     })
 
@@ -31,4 +31,17 @@ module.exports = app => {
             res.send(400, err);
         }
     })
+
+    app.put('/pay', async(req, res) => {
+        let id = req.params.id
+        console.log('put')
+        try {
+            // const newPost = await Post.findByIdAndUpdate(id, req.body, {new: true})
+            // res.send(newPost);
+        } catch (err) {
+
+            res.send(500, err);
+
+        }
+    });
 }

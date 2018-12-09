@@ -31,18 +31,17 @@ td {
 }
 @keyframes tr-animation {
     0% {
-        background: linear-gradient(180deg, rgba(57,163,52,0.1) 0%, rgba(116,204,111,0.1) 50%, rgba(207,255,233,0.1) 100%)
+        background: linear-gradient(180deg, rgba(57,163,52,0.1) 0%, rgba(116,204,111,0.1) 50%, rgba(207,255,233,0.1) 100%);
     };
     50% {
-        background: linear-gradient(180deg, rgba(207,255,233,0.1) 0%, rgba(57,163,52,0.1) 50%, rgba(116,204,111,0.1) 100%)
+        background: linear-gradient(180deg, rgba(207,255,233,0.1) 0%, rgba(57,163,52,0.1) 50%, rgba(116,204,111,0.1) 100%);
     };
-    100%{
-        background: linear-gradient(180deg, rgba(116,204,111,0.1) 0%, rgba(207,255,233,0.1) 50%, rgba(57,163,52,0.1) 100%)
+    100% {
+        background: linear-gradient(180deg, rgba(116,204,111,0.1) 0%, rgba(207,255,233,0.1) 50%, rgba(57,163,52,0.1) 100%);
     }
 }
-
 tr:hover {
-    transition: all .3s cubic-bezier(.2,.42,.63,.69) ; 
+    transition: all 0.3s cubic-bezier(.2,.42,.63,.69);
     background: rgba(181, 255, 225, 0.25);
     /* background: linear-gradient(180deg, rgba(57,163,52,0.1) 0%, rgba(116,204,111,0.1) 50%, rgba(207,255,233,0.1) 100%);
     /* animation: tr-animation 2s infinite;; */

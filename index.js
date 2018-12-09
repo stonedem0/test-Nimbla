@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose')
 const path = require('path')
 const bodyParser = require('body-parser');
+const methodOverride = require('method-override')
 const app = express();
 
 require('dotenv').config()
@@ -23,6 +24,8 @@ app.set('views', path.join(__dirname, 'views'));
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
+
+app.use(methodOverride('_method'));
 
 require('./controllers/invoiceRouter')(app);
 
