@@ -3,9 +3,12 @@ const mongoose = require('mongoose')
 const path = require('path')
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override')
+const passport = require('passport')
 const app = express();
 
 require('dotenv').config()
+
+require('./config.js/passport')
 
 const dbURI = process.env.MONGO_URI
 
@@ -22,11 +25,16 @@ db.once('open', _ => console.log('successfully connected to DB'));
 app.set('view engine', 'pug')
 app.set('views', path.join(__dirname, 'views'));
 
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 app.use(methodOverride('_method'));
 
+
+require('./controllers/userRouter')(app);
 require('./controllers/invoiceRouter')(app);
 
 

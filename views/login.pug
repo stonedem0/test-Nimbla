@@ -1,0 +1,10 @@
+doctype html  
+html(lang='en')  
+ head
+   title Login
+ body
+   div.login
+    form(method='POST' action='/login', enctype='x-www-form-urlencoded')
+      input#username(type='text', placeholder='username' name='username')
+      input#password(type='password', placeholder='password' name='password')  
+      button.custom-button(type='submit') Login
