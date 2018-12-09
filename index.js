@@ -23,19 +23,6 @@ mongoose.connect(dbURI, {useNewUrlParser: true});
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'DB connection error:'));
 db.once('open', _ => console.log('successfully connected to DB'));
-
-// db.on('open', function () {
-//     db.db.listCollections().toArray(function (err, names) {
-//         console.log(err, names);
-//         db.close();
-//     });
-// });
-
-// mongoose.connection.on('open', function(){
-//     for (let i in mongoose.connection.collections) {
-//         console.log(mongoose.connection.collections);
-//     }
-// });
 app.set('view engine', 'pug')
 app.set('views', path.join(__dirname, 'views'));
 
@@ -62,7 +49,7 @@ require('./controllers/invoiceRouter')(app);
 
 app.get('/', (req, res) => {
     console.log('get', req.user)
-   res.render('invoice')
+    res.render('login')
 })
 
 app.listen('3000', _ => {

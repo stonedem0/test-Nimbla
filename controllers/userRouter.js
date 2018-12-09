@@ -9,6 +9,10 @@ module.exports = app => {
         console.log('req.user', req.user)
         res.redirect('/invoices')
     })
+    app.post('/signup', passport.authenticate('local'), (req, res) => {
+        console.log('req.user', req.user)
+        res.redirect('/invoices')
+    })
     app.get('/logout', (req, res) => {
         req.logout();
         res.redirect('/loginpage');
