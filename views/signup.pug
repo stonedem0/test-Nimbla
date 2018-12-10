@@ -1,0 +1,11 @@
+doctype html  
+html(lang='en')  
+ head
+   title Sign up
+ body
+   div.signup
+    form(method='POST' action='/signup', enctype='x-www-form-urlencoded')
+      input#username(type='text', placeholder='username' name='username')
+      input#password(type='password', placeholder='password' name='password')  
+      button.custom-button(type='submit') Login
+    a(href='/loginpage') login  

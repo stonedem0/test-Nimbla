@@ -45,11 +45,9 @@ app.use(methodOverride('_method'));
 require('./controllers/userRouter')(app);
 require('./controllers/invoiceRouter')(app);
 
-
-
 app.get('/', (req, res) => {
     console.log('get', req.user)
-    res.render('login')
+    res.render('signup')
 })
 
 app.listen('3000', _ => {
