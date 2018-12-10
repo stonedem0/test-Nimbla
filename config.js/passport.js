@@ -22,6 +22,7 @@ passport.use('local-login', new LocalStrategy(async function (username, password
             return done(null, existingUser);
         }
         console.log('wrong password')
+        return done(null, false);
     } catch (err) {
         console.log('err', err)
         done(err, null);
