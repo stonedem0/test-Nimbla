@@ -9,7 +9,7 @@ html(lang='en')
     form(method='POST' action='/login', enctype='x-www-form-urlencoded')
       input#username(type='text', placeholder='username' name='username')
       input#password(type='password', placeholder='password' name='password')  
-      button.custom-button(type='submit') Login
+      button.custom-button(type='submit') Log in
       if(message)
        p.message= message
     a(href='/') Sign up 

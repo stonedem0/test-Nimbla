@@ -1,0 +1,12 @@
+doctype html  
+html(lang='en')  
+ head
+   style
+    include invoices.css
+   title Pay
+ body
+   div.create-invoice
+    form(action='/pay?_method=PUT' method="post" enctype='x-www-form-urlencoded')
+     input#date.form-control(type='date', name='pay_date')
+     input#date.form-control(type='text', name='date', value=date)
+     button.custom-button(type='submit') Pay
