@@ -9,6 +9,7 @@ const invoiceSchema = new Schema({
   customer_name: String,
   description: String,
   pay_date: String,
+  paid_date: String,
   paid_status: String,
   createdAt: { type: Date, default: Date.now },
 

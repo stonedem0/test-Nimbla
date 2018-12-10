@@ -7,6 +7,6 @@ html(lang='en')
  body
    div.create-invoice
     form(action='/pay?_method=PUT' method="post" enctype='x-www-form-urlencoded')
-     input#date.form-control(type='date', name='pay_date')
-     input#date.form-control(type='text', name='date', value=date)
+     input#date.form-control(type='date', name='paid_date')
+     input#id.form-control(type='text', name='id', value=id)
      button.custom-button(type='submit') Pay

@@ -117,3 +117,7 @@ input {
     animation-iteration-count: 1;
 
 }
+
+#id {
+    display: none
+}
