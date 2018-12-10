@@ -2,7 +2,7 @@ const User = require('../models/user')
 const passport = require('passport')
 
 module.exports = app => {
-    app.get('/loginpage', (req, res) => {
+    app.get('/login', (req, res) => {
         res.render('login')
     })
     app.post('/login', passport.authenticate('local-login'), (req, res) => {
@@ -15,7 +15,7 @@ module.exports = app => {
     })
     app.get('/logout', (req, res) => {
         req.logout();
-        res.redirect('/loginpage');
+        res.redirect('/l');
     });
 
      
