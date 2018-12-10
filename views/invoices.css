@@ -8,6 +8,7 @@ body {
     display: flex;
     justify-content: center;
 }
+
 table {
     margin-top: 35px;
     background-color: rgba(99, 230, 170, .6);
@@ -52,6 +53,9 @@ tr:hover {
 }
 .paid {
     color: #007C52;
+}
+.message {
+    color: #EE6055;
 }
 
 .add-new {

@@ -6,6 +6,7 @@ const methodOverride = require('method-override')
 const passport = require('passport')
 const cookieSession = require('cookie-session');
 const session = require('express-session')
+const flash = require('connect-flash')
 const app = express();
 
 require('dotenv').config()
@@ -28,10 +29,13 @@ app.set('views', path.join(__dirname, 'views'));
 
 // app.use(session({ secret: 'iwastoolate' }));
 
+
 app.use(cookieSession({
     maxAge: 30 * 24 * 60 * 60 * 1000,
     keys: [process.env.COOKIE_KEY]
 }));
+
+app.use(flash());
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -45,10 +49,6 @@ app.use(methodOverride('_method'));
 require('./controllers/userRouter')(app);
 require('./controllers/invoiceRouter')(app);
 
-app.get('/', (req, res) => {
-    console.log('get', req.user)
-    res.render('signup')
-})
 
 app.listen('3000', _ => {
     console.log('hi, there')
