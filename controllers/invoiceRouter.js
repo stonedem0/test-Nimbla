@@ -34,7 +34,6 @@ module.exports = app => {
             paid_date: '',
             paid_status: 'unpaid'
         })
-        console.log('new one: ', invoice)
         try {
             await invoice.save()
             res.redirect('/invoices')
@@ -43,19 +42,21 @@ module.exports = app => {
         }
     })
 
-    app.put('/pay/:id', async(req, res, next) => {
+    app.put('/pay/:id', async(req, res) => {
+        console.log('user', req.user)
         let {id, paid_date} = req.body
         if (!paid_date) {
             return res.render('pay', {
-                id: req.params.id,
+                id: id,
                 message: 'you should pick a date'
             })
         }
         try {
-            await Invoice.findByIdAndUpdate(id, {
+             await Invoice.findOneAndUpdate( {_id: id, user_id: req.user.id}, {
                 paid_date: paid_date,
                 paid_status: 'paid'
-            }, {new: true})
+            })
+            console.log(newI)
             res.redirect('/invoices')
         } catch (err) {
             res.send(err);

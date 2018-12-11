@@ -35,7 +35,7 @@ passport.use('local-signup', new LocalStrategy({
         if (existingUser) {
             return done(null, false);
         }
-
+        
         const user = await new User();
         user.username = username;
         user.password = user.generateHash(password)
