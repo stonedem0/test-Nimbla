@@ -10,9 +10,7 @@ module.exports = app => {
             user: req.user.username,
             invoices: invoices
         })
-
     })
-
 
     app.get('/create', (req, res) => {
         res.render('invoice')
@@ -27,30 +25,40 @@ module.exports = app => {
     app.post('/create', async(req, res) => {
         console.log('post user:', req.user.id)
         const {invoice_value, customer_name, description, paid_status, pay_date} = req.body;
-        const invoice = new Invoice({user_id: req.user.id, invoice_value: invoice_value, customer_name: customer_name, description: description, pay_date: pay_date, paid_date: '', paid_status: 'unpaid'})
+        const invoice = new Invoice({
+            user_id: req.user.id,
+            invoice_value,
+            customer_name,
+            description,
+            pay_date,
+            paid_date: '',
+            paid_status: 'unpaid'
+        })
         console.log('new one: ', invoice)
         try {
             await invoice.save()
             res.redirect('/invoices')
         } catch (err) {
-            console.error('Error saving post: %s', err)
             res.send(400, err);
         }
     })
 
-    app.put('/pay', async(req, res) => {
-         console.log('body', req.body)
+    app.put('/pay/:id', async(req, res, next) => {
+        let {id, paid_date} = req.body
+        if (!paid_date) {
+            return res.render('pay', {
+                id: req.params.id,
+                message: 'you should pick a date'
+            })
+        }
         try {
-            let {id, paid_date} = req.body
-            // let user = req.user
-            // let invoice = await Invoice.find({user_id: req.user.id})
-            // console.log('invoice', invoice)
-            const paidInvoice = await Invoice.findByIdAndUpdate(id, {paid_date: paid_date, paid_status: 'paid'}, {new:true})
-            console.log('new', paidInvoice)
+            await Invoice.findByIdAndUpdate(id, {
+                paid_date: paid_date,
+                paid_status: 'paid'
+            }, {new: true})
             res.redirect('/invoices')
         } catch (err) {
             res.send(err);
-
         }
     })
 }
