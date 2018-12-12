@@ -10,7 +10,7 @@ const flash = require('connect-flash')
 const app = express();
 
 require('dotenv').config()
-require('./config.js/passport')
+require('./config/passport')
 
 const dbURI = process.env.MONGO_URI
 
@@ -26,9 +26,6 @@ db.on('error', console.error.bind(console, 'DB connection error:'));
 db.once('open', _ => console.log('successfully connected to DB'));
 app.set('view engine', 'pug')
 app.set('views', path.join(__dirname, 'views'));
-
-// app.use(session({ secret: 'iwastoolate' }));
-
 
 app.use(cookieSession({
     maxAge: 30 * 24 * 60 * 60 * 1000,
@@ -53,3 +50,5 @@ require('./controllers/invoiceRouter')(app);
 app.listen('3000', _ => {
     console.log('hi, there')
 })
+
+module.exports = app
