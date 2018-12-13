@@ -1,16 +1,13 @@
-const Invoice = require('../models/invoice');
+// const Invoice = require('../models/invoice');
 
-exports.findAll = async function (req, res) {
-    const invoices = await Invoice
-        .find({user_id: req.user.id})
+exports.findAll = function (user_id, model) {
+    const invoices = model
+        .find({user_id: user_id})
         .sort({paid_status: -1})
-    res.render('invoices', {
-        user: req.user.username,
-        invoices: invoices
-    })
+        return invoices
 }
 
-exports.create = (body, user_id, model) =>{
+exports.create = (body, user_id, model) => {
     const {invoice_value, customer_name, description, paid_status, pay_date} = body;
     const invoice = new model({
         user_id: user_id,

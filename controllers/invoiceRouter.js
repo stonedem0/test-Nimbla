@@ -3,7 +3,19 @@ const Invoice = require('../models/invoice')
 const requireLogin = require('../config/requiredLogin')
 
 module.exports = app => {
-    app.get('/invoices', requireLogin, invoiceController.findAll)
+    app.get('/invoices', requireLogin, async function (req, res) {
+        const user_id = req.user.id
+        try {
+            let invoices = await invoiceController.findAll(user_id, Invoice)
+            res.render('invoices', {
+                        user: req.user.username,
+                        invoices: invoices
+                    })
+            
+        } catch(err){
+            res.send(400, err)
+        }
+    })
        
     app.get('/create', requireLogin, (req, res) => {
         res.render('invoice')
