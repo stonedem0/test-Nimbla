@@ -1,4 +1,4 @@
-// const Invoice = require('../models/invoice');
+//I try to keep controllers and http stuff separate. Again, just for easy tests
 
 exports.findAll = function (user_id, model) {
     const invoices = model

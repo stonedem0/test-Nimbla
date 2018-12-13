@@ -5,7 +5,6 @@ const bodyParser = require('body-parser');
 const methodOverride = require('method-override')
 const passport = require('passport')
 const cookieSession = require('cookie-session');
-// const session = require('express-session')
 const flash = require('connect-flash')
 const app = express();
 
@@ -17,7 +16,6 @@ const dbURI = process.env.MONGO_URI
 if (!dbURI) {
     throw new Error('db URI is equired!')
 }
-
 
 // Set up mongoose connection
 mongoose.connect(dbURI, {useNewUrlParser: true});
@@ -43,13 +41,11 @@ app.use(bodyParser.json())
 
 app.use(methodOverride('_method'));
 
-require('./controllers/userRouter')(app);
-require('./controllers/invoiceRouter')(app);
+require('./routers/userRouter')(app);
+require('./routers/invoiceRouter')(app);
 
 app.listen('3000', _ => {
     console.log('hi, there')
 })
-
-
 
 module.exports = app

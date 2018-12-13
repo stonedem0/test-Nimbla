@@ -2,6 +2,9 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const User = require('../models/user')
 
+//I provide an simple authentication with passport, just to keep user ID.
+//It makes communication with DB easier
+
 passport.serializeUser((user, done) => {
     console.log('user:', user)
     done(null, user.id);

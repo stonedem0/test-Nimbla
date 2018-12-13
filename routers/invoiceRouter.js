@@ -2,6 +2,9 @@ const invoiceController = require('../controllers/invoiceController')
 const Invoice = require('../models/invoice')
 const requireLogin = require('../config/requiredLogin')
 
+// Perhaps this isn't the most elegant solution for the router. 
+//But this one is easily for testing.
+
 module.exports = app => {
     app.get('/invoices', requireLogin, async function (req, res) {
         const user_id = req.user.id
