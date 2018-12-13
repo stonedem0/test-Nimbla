@@ -13,10 +13,10 @@ html(lang='en')
        input#username(type='text', placeholder='username' name='username')
       p.animation-field
        input#password(type='password', placeholder='password' name='password') 
-      div.button-block
-       button.custom-button(type='submit') Sign up
        if(message)
         p.message= message
-       div.link-block
-        span Already have one? 
+      div.link-container
+       button.custom-button(type='submit') Sign up
+      div.link-container
+       p Already have one? 
         a.login-link(href='/login') Log in  

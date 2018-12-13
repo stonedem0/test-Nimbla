@@ -1,7 +1,7 @@
 body {
-    background-color: rgba(99, 230, 170, .7);
+    background-color: rgba(6, 214, 160, .7);
     font-family: Arial, Helvetica, sans-serif;
-    color: #701DD6;
+    color: #7935f3;
 }
 
 .user-block {
@@ -19,7 +19,7 @@ body {
 
 table {
     margin-top: 35px;
-    background-color: rgba(99, 230, 170, .6);
+    background-color: rgba(6, 214, 160, .6);
     width: 70%;
     border-collapse: collapse;
     text-align: left;
@@ -56,13 +56,13 @@ tr:hover {
 }
 
 .unpaid {
-    color: #EE6055;
+    color: #EF476F;
 }
 .paid {
     color: #007C52;
 }
 .message {
-    color: #EE6055;
+    color: #EF476F;
 }
 
 .add-new {
@@ -73,9 +73,9 @@ tr:hover {
 .custom-button {
     margin-top: 20px;
     height: 35px;
-    width: 100px;
+    width: 90px;
     color: #00241B;
-    font-size: 14px;
+    font-size: 12px;
     background-color: rgba(255,255,255,0.3);
     border: 0;
 }
@@ -87,8 +87,12 @@ tr:hover {
     border: 0;
 }
 
+form {
+    padding: 20px;
+    background-color: rgba(166, 249, 211, 0.34);
+}
 input {
-    font-size: 14px;
+    font-size: 16px;
     width: 300px;
     color: #333333;
     background-color: rgba(99, 230, 170, 0);
@@ -136,13 +140,14 @@ input {
     display: none;
 }
 a {
-    color: black;
+    font-size: 14px;
+    color: #EF476F;
 }
 a:link {
     text-decoration: none;
 }
 a:visited {
-    color: black;
+    color: #EF476F;
 }
 
 .container {
@@ -153,4 +158,14 @@ a:visited {
 
 .link-block {
     margin-top: 30px;
+}
+
+.link-container {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.create-invoice {
+    margin: 100px;
 }

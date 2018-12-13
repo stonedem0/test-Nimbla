@@ -7,14 +7,16 @@ html(lang='en')
  body
    div.container
     form(method='POST' action='/login', enctype='x-www-form-urlencoded', autocomplete='off')
+      h2 Login in
       p.animation-field
        input#username(type='text', placeholder='username' name='username')
       p.animation-field
-       input#password(type='password', placeholder='password' name='password')  
-      button.custom-button(type='submit') Log in
-      if(message)
-       p.message= message
-      div.link-block
+       input#password(type='password', placeholder='password' name='password') 
+       if(message)
+        p.message= message
+      div.link-container
+       button.custom-button(type='submit') Log in
+      div.link-container
        a(href='/') Sign up 
 
    

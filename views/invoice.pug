@@ -7,13 +7,14 @@ html(lang='en')
  body
    div.create-invoice
     form(method='POST' action='/create', enctype='x-www-form-urlencoded', autocomplete='off')
+     h2 New invoice
       div.form-group
         p.animation-field
          input#invoice_value.form-control(type='number', placeholder='value' name='invoice_value')
         p.animation-field
-         input#name.form-control(type='text', placeholder='name' name='customer_name')
+         input#name.form-control(type='text', placeholder='custemer name' name='customer_name')
         p.animation-field
-         input#description.form-control(type='text', placeholder='decsription' name='description')  
+         input#description.form-control(type='text', placeholder='description' name='description')  
         p.animation-filed
          input#date.form-control(type='date', name='pay_date', n='date')
       button.custom-button(type='submit') Save
