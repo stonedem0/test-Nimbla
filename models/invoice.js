@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
-console.log
-
 
 const invoiceSchema = new Schema({
   user_id:{ type: Schema.Types.ObjectId, ref: 'User' },
@@ -11,8 +9,7 @@ const invoiceSchema = new Schema({
   pay_date: String,
   paid_date: String,
   paid_status: String,
-  createdAt: { type: Date, default: Date.now },
-
+  createdAt: { type: Date, default: Date.now }
 });
 
 const Invoice = mongoose.model('Invoice', invoiceSchema);

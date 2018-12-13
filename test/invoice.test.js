@@ -2,61 +2,37 @@ process.env.NODE_ENV = 'test';
 
 const chai = require('chai');
 const expect = chai.expect;
-// const Invoice = require('../models/invoice');
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const invoiceController = require('../controllers/invoiceController')
 
-const testDBURL = process.env.TEST_MONGO_URI
+describe('test controllers', function () {
+    let user_id = 'is42';
+    let data = {
+        invoice_value: 42
+    }
+    function FakeInvoice(data) {};
+    FakeInvoice.prototype.save = function () {
+        this.didCallSave = true;
+        return true;
+    }
 
-require('dotenv').config()
+    FakeInvoice.findOneAndUpdate = function (body, data) {
+        this.didCallUpdate = true;
+        return true;
+    }
 
+    it('should create a new invoice', function () {
+        let res = invoiceController.create(data, user_id, FakeInvoice)
+        expect(res).to.be.true;
 
-const testSchema = new Schema({
-    name: { type: String, required: true }
-  });
- 
-  const Name = mongoose.model('Name', testSchema);
-  describe('DB Tests', () => {
-    before(function (done) {
-      mongoose.connect(testDBURL);
-      const db = mongoose.connection;
-      db.on('error', console.error.bind(console, 'connection error'));
-      db.once('open', function() {
-        console.log('successfully connected to test DB');
-        done();
-      });
     });
-    describe('Test Database', function() {
-      it('New name saved to test database', function(done) {
-        var testName = Name({
-          name: 'Mike'
-        });
-   
-        testName.save(done);
-      });
-      it('Dont save incorrect format to database', function(done) {
-        //Attempt to save with wrong info. An error should trigger
-        var wrongSave = Name({
-          notName: 'Not Mike'
-        });
-        wrongSave.save(err => {
-          if(err) { return done(); }
-          throw new Error('Should generate error!');
-        });
-      });
-      it('Should retrieve data from test database', function(done) {
-        //Look up the 'Mike' object previously saved.
-        Name.find({name: 'Mike'}, (err, name) => {
-          if(err) {throw err;}
-          if(name.length === 0) {throw new Error('No data!');}
-          done();
-        });
-      });
-    });
-    //After all tests are finished drop database and close connection
-    after(function(done){
-      mongoose.connection.db.dropDatabase(function(){
-        mongoose.connection.close(done);
-      });
-    });
-  });
+
+    it('should update an existing invoice', function () {
+        let body = {
+            id: 'isnt42'
+        }
+        let res = invoiceController.update(body, user_id, FakeInvoice)
+        expect(res).to.be.true;
+
+    })
+
+});

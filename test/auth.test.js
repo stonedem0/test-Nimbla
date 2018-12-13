@@ -2,6 +2,7 @@ process.env.NODE_ENV = 'test';
 
 const chai = require('chai');
 const expect = chai.expect;
+const mongoose = require('mongoose');
 
 const app = require('../index');
 const request = require('supertest');
@@ -11,4 +12,5 @@ describe('Test the root path', () => {
         const response = await request(app).get('/');
         expect(response.statusCode).equal(200);
     });
+    
 })
