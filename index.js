@@ -11,6 +11,7 @@ const app = express();
 require('dotenv').config()
 require('./config/passport')
 
+//This URI I'll sent with mail
 const dbURI = process.env.MONGO_URI
 
 if (!dbURI) {
@@ -28,6 +29,7 @@ app.db = db;
 
 app.use(cookieSession({
     maxAge: 30 * 24 * 60 * 60 * 1000,
+    //This key I'll key with mail
     keys: [process.env.COOKIE_KEY]
 }));
 
@@ -45,7 +47,7 @@ require('./routers/userRouter')(app);
 require('./routers/invoiceRouter')(app);
 
 app.listen('3000', _ => {
-    console.log('hi, there')
+    console.log('hi, there, listening on port 3000!');
 })
 
 module.exports = app
