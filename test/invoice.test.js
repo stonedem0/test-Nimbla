@@ -16,21 +16,21 @@ describe('test controllers', function () {
     }
     FakeInvoice.find = function(user_id) {
         this.didFindAll = true;
-        return true;
+        return new FakeQuery()
     }
-    FakeInvoice.sort = function(condition) {
-        this.didSort = true;
-        return true;
-    }
+  
     FakeInvoice.findOneAndUpdate = function (body, data) {
         this.didCallUpdate = true;
         return true;
     }
-    // it('should find all invoices', function () {
-    //     let res = invoiceController.findAll(user_id, FakeInvoice)
-    //     expect(res).to.be.true;
+    function FakeQuery() {
 
-    // });
+    }
+
+    FakeQuery.prototype.sort = function() {
+        this.didSort = true
+        return this
+    }
 
     it('should create a new invoice', function () {
         let res = invoiceController.create(data, user_id, FakeInvoice)

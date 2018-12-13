@@ -1,9 +1,17 @@
 body {
     background-color: rgba(99, 230, 170, .7);
-    font-family: BlinkMacSystemFont;
+    font-family: Arial, Helvetica, sans-serif;
     color: #701DD6;
 }
 
+.user-block {
+    margin: 23px;
+    display: inherit;
+}
+.user {
+    font-size: 22px;
+    font-weight: bold;
+}
 .invoices {
     display: flex;
     justify-content: center;
@@ -44,8 +52,7 @@ td {
 tr:hover {
     transition: all 0.3s cubic-bezier(.2,.42,.63,.69);
     background: rgba(181, 255, 225, 0.25);
-    /* background: linear-gradient(180deg, rgba(57,163,52,0.1) 0%, rgba(116,204,111,0.1) 50%, rgba(207,255,233,0.1) 100%);
-    /* animation: tr-animation 2s infinite;; */
+
 }
 
 .unpaid {
@@ -73,6 +80,13 @@ tr:hover {
     border: 0;
 }
 
+.pay-button {
+    color: #00241B;
+    font-size: 14px;
+    background-color: rgba(255,255,255,0.3);
+    border: 0;
+}
+
 input {
     font-size: 14px;
     width: 300px;
@@ -90,14 +104,14 @@ input {
     justify-content: center;
 
 }
-.invoice-field {
+.animation-field {
     display: block;
     text-decoration: none;
     width: max-content;
     position: relative;
     transition: all 0.15s ease-out;
 }
-.invoice-field:before {
+.animation-field:before {
     display: block;
     content: "";
     position: absolute;
@@ -110,7 +124,7 @@ input {
     transform: scaleX(0);
     transition: all 0.2s cubic-bezier(1, 0.25, 0, 0.75) 0s;
 }
-.invoice-field:hover:before {
+.animation-field:hover:before {
     display: block;
     visibility: visible;
     transform: scaleX(1);
@@ -119,5 +133,24 @@ input {
 }
 
 #id {
-    display: none
+    display: none;
+}
+a {
+    color: black;
+}
+a:link {
+    text-decoration: none;
+}
+a:visited {
+    color: black;
+}
+
+.container {
+    margin: 100px;
+    display: flex;
+    justify-content: center;
+}
+
+.link-block {
+    margin-top: 30px;
 }

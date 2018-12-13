@@ -6,14 +6,14 @@ html(lang='en')
    title Invoice
  body
    div.create-invoice
-    form(method='POST' action='/create', enctype='x-www-form-urlencoded')
+    form(method='POST' action='/create', enctype='x-www-form-urlencoded', autocomplete='off')
       div.form-group
-        p.invoice-field
+        p.animation-field
          input#invoice_value.form-control(type='number', placeholder='value' name='invoice_value')
-        p.invoice-field
+        p.animation-field
          input#name.form-control(type='text', placeholder='name' name='customer_name')
-        p.invoice-field
+        p.animation-field
          input#description.form-control(type='text', placeholder='decsription' name='description')  
-        p.invoice-filed 
-         input#date.form-control(type='date', name='pay_date')
+        p.animation-filed
+         input#date.form-control(type='date', name='pay_date', n='date')
       button.custom-button(type='submit') Save

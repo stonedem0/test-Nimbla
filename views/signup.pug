@@ -5,11 +5,18 @@ html(lang='en')
     include invoices.css
    title Sign up
  body
-   div.signup
-    form(method='POST' action='/signup', enctype='x-www-form-urlencoded')
-      input#username(type='text', placeholder='username' name='username')
-      input#password(type='password', placeholder='password' name='password')  
-      button.custom-button(type='submit') Sign up
-      if(message)
-       p.message= message
-    a(href='/login') Log in  
+   div.container
+    div.form-block
+     form(method='POST' action='/signup', enctype='x-www-form-urlencoded', autocomplete="off")
+      h2 Create a new account
+      p.animation-field
+       input#username(type='text', placeholder='username' name='username')
+      p.animation-field
+       input#password(type='password', placeholder='password' name='password') 
+      div.button-block
+       button.custom-button(type='submit') Sign up
+       if(message)
+        p.message= message
+       div.link-block
+        span Already have one? 
+        a.login-link(href='/login') Log in  

@@ -5,16 +5,17 @@ html(lang='en')
      include invoices.css
     title Invoices
   body
-   a(href='/logout') Log out
-   p.user= user
+    div.user-block
+     p.user= user
+     a(href='/logout') Log out
     div.invoices 
       table
         tr 
           th name
           th description 
           th status
-          th pay date
-          th pay
+          th payment date
+          th pay now
           th paid date
         each i in invoices
          tr 
@@ -26,9 +27,10 @@ html(lang='en')
            td.unpaid= i.paid_status
           td= i.pay_date 
           td 
-           a(href=`/pay/${i._id}`) $
+           button.pay-button 
+            a(href=`/pay/${i._id}`) £
           if(i.paid_date)  
           td= i.paid_date 
-    div.add-new        
+    div.add-new.cusr        
       a(href='/create') 
-        button add new
+        button.custom-button add new
