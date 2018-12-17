@@ -13,7 +13,7 @@ require('./config/passport')
 
 //This URI I'll sent with mail
 const dbURI = process.env.MONGO_URI
-let localdb = 'mongodb://localhost:27017/myproject'
+let localdb = 'mongodb://172.17.0.1:27017/myproject'
 
 if (!dbURI) {
     throw new Error('db URI is equired!')
