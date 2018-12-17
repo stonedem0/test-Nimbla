@@ -13,13 +13,14 @@ require('./config/passport')
 
 //This URI I'll sent with mail
 const dbURI = process.env.MONGO_URI
+let localdb = 'mongodb://localhost:27017/myproject'
 
 if (!dbURI) {
     throw new Error('db URI is equired!')
 }
 
 // Set up mongoose connection
-mongoose.connect(dbURI, {useNewUrlParser: true});
+mongoose.connect(localdb, {useNewUrlParser: true});
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'DB connection error:'));
 db.once('open', _ => console.log('successfully connected to DB'));
